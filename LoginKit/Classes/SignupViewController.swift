@@ -11,7 +11,7 @@ import Validator
 
 public protocol SignupViewControllerDelegate: class {
 
-    func didSelectSignup(_ viewController: UIViewController, email: String, name: String, password: String)
+    func didSelectSignup(_ viewController: UIViewController, email: String, firstName: String, lastName: String, password: String)
     func signupDidSelectBack(_ viewController: UIViewController)
 
 }
@@ -52,17 +52,20 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
 
     @IBOutlet var fields: [SkyFloatingLabelTextField]!
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var firstNameTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var lastNameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var repeatPasswordTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var backgroundImageView: GradientImageView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var signupButton: Buttn!
+    @IBOutlet weak var errorLabel: UILabel!
 
     // MARK: - UIViewController
 
 	override open func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.text = ""
 		_ = loadFonts
         setupValidation()
         initKeyboardMover()
@@ -106,20 +109,26 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
 
         emailTextField.placeholder = configuration.emailPlaceholder
         emailTextField.errorColor = configuration.errorTintColor
-        nameTextField.placeholder = configuration.namePlaceholder
-        nameTextField.errorColor = configuration.errorTintColor
+        firstNameTextField.placeholder = configuration.firstNamePlaceholder
+        firstNameTextField.errorColor = configuration.errorTintColor
+        lastNameTextField.placeholder = configuration.lastNamePlaceholder
+        lastNameTextField.errorColor = configuration.errorTintColor
         passwordTextField.placeholder = configuration.passwordPlaceholder
         passwordTextField.errorColor = configuration.errorTintColor
         repeatPasswordTextField.placeholder = configuration.repeatPasswordPlaceholder
         repeatPasswordTextField.errorColor = configuration.errorTintColor
+        
+        errorLabel.textColor = configuration.errorTintColor
     }
 
     func setupFonts() {
-        nameTextField.font = Font.montserratRegular.get(size: 13)
+        firstNameTextField.font = Font.montserratRegular.get(size: 13)
+        lastNameTextField.font = Font.montserratRegular.get(size: 13)
         emailTextField.font = Font.montserratRegular.get(size: 13)
         passwordTextField.font = Font.montserratRegular.get(size: 13)
         repeatPasswordTextField.font = Font.montserratRegular.get(size: 13)
         signupButton.titleLabel?.font = Font.montserratRegular.get(size: 15)
+        errorLabel.font = Font.montserratRegular.get(size: 13)
     }
 
     // MARK: - Action's
@@ -129,13 +138,13 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
     }
 
     @IBAction func didSelectSignup(_ sender: AnyObject) {
-        guard let email = emailTextField.text, let name = nameTextField.text, let password = passwordTextField.text else {
+        guard let email = emailTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let password = passwordTextField.text else {
             return
         }
 
         signupAttempted = true
         validateFields {
-            delegate?.didSelectSignup(self, email: email, name: name, password: password)
+            delegate?.didSelectSignup(self, email: email, firstName: firstName, lastName: lastName, password: password)
         }
     }
 
@@ -151,7 +160,8 @@ extension SignupViewController {
     }
 
     func setupValidation() {
-        setupValidationOn(field: nameTextField, rules: ValidationService.nameRules)
+        setupValidationOn(field: firstNameTextField, rules: ValidationService.nameRules)
+        setupValidationOn(field: lastNameTextField, rules: ValidationService.nameRules)
         setupValidationOn(field: emailTextField, rules: ValidationService.emailRules)
 
         var passwordRules = ValidationService.passwordRules

@@ -48,6 +48,7 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
     // MARK: Outlet's
 
     @IBOutlet var fields: Array<SkyFloatingLabelTextField> = []
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -60,6 +61,7 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
 
 	override open func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.text = ""
 		_ = loadFonts
         setupValidation()
         initKeyboardMover()
@@ -102,6 +104,8 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
         emailTextField.errorColor = configuration.errorTintColor
         passwordTextField.placeholder = configuration.passwordPlaceholder
         passwordTextField.errorColor = configuration.errorTintColor
+        
+        errorLabel.textColor = configuration.errorTintColor
 
         loginButton.setTitle(configuration.loginButtonText, for: .normal)
         loginButton.setTitleColor(configuration.tintColor, for: .normal)
@@ -116,10 +120,10 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
         passwordTextField.font = Font.montserratRegular.get(size: 13)
         forgotPasswordButton.titleLabel?.font = Font.montserratLight.get(size: 13)
         loginButton.titleLabel?.font = Font.montserratRegular.get(size: 15)
+        errorLabel.font = Font.montserratLight.get(size: 13)
     }
 
     // MARK: - Action's
-
     @IBAction func didSelectBack(_ sender: AnyObject) {
         delegate?.loginDidSelectBack(self)
     }

@@ -72,7 +72,7 @@ struct ValidationService {
 
     static var nameRules: ValidationRuleSet<String> {
         var nameRules = ValidationRuleSet<String>()
-        nameRules.add(rule: FullNameRule(error: ValidationError.invalidName))
+        nameRules.add(rule: ValidationRuleLength(min: 1, error: ValidationError.invalidName))
         return nameRules
     }
 

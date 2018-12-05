@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,6 +21,7 @@
             <connections>
                 <outlet property="backgroundImageView" destination="Rzw-Ub-rrB" id="7MO-4R-d1U"/>
                 <outlet property="emailTextField" destination="Fip-1z-O0E" id="cJj-Vm-BeM"/>
+                <outlet property="errorLabel" destination="JKT-vx-qSS" id="6a6-va-VDL"/>
                 <outlet property="forgotPasswordButton" destination="C1p-rI-nYd" id="r4N-dM-V2m"/>
                 <outlet property="loginButton" destination="RjZ-Dg-w39" id="ahb-Bl-D36"/>
                 <outlet property="logoImageView" destination="KTU-R2-WCR" id="N6C-S1-kRo"/>
@@ -206,11 +208,21 @@
                         <action selector="didSelectLogin:" destination="-1" eventType="touchUpInside" id="r2N-Dm-j9Y"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There was a problem logging in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-vx-qSS" userLabel="Error message">
+                    <rect key="frame" x="30" y="154" width="315" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="lKh-8R-blS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="jh0-UX-V3y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4Zt-N2-v3w"/>
                 <constraint firstAttribute="trailing" secondItem="Rzw-Ub-rrB" secondAttribute="trailing" constant="-20" id="ApF-ba-iJq"/>
+                <constraint firstItem="JKT-vx-qSS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="BZJ-8D-gRL"/>
                 <constraint firstAttribute="bottom" secondItem="RjZ-Dg-w39" secondAttribute="bottom" constant="50" id="Drk-oB-1aV"/>
                 <constraint firstAttribute="bottom" secondItem="Rzw-Ub-rrB" secondAttribute="bottom" constant="-20" id="Ewe-SS-oVS"/>
                 <constraint firstItem="KTU-R2-WCR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="K4d-4P-byJ"/>
@@ -220,9 +232,11 @@
                 <constraint firstItem="GlL-4f-okN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="byw-EZ-Amz"/>
                 <constraint firstItem="RjZ-Dg-w39" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="cVO-0b-d58"/>
                 <constraint firstItem="jh0-UX-V3y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="dkb-e8-f9g"/>
+                <constraint firstItem="GlL-4f-okN" firstAttribute="top" secondItem="JKT-vx-qSS" secondAttribute="bottom" constant="10" id="oY7-OI-Foa"/>
                 <constraint firstItem="KTU-R2-WCR" firstAttribute="top" secondItem="jh0-UX-V3y" secondAttribute="bottom" constant="20" id="qhd-1l-dNk"/>
                 <constraint firstItem="Rzw-Ub-rrB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="uUX-Br-mrC"/>
                 <constraint firstAttribute="trailing" secondItem="RjZ-Dg-w39" secondAttribute="trailing" constant="40" id="x9n-IG-sCn"/>
+                <constraint firstAttribute="trailing" secondItem="JKT-vx-qSS" secondAttribute="trailing" constant="30" id="xVb-Km-G4o"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>

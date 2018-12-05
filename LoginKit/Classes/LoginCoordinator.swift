@@ -27,13 +27,16 @@ public protocol ConfigurationSource {
     var emailPlaceholder: String { get }
     var passwordPlaceholder: String { get }
     var repeatPasswordPlaceholder: String { get }
-    var namePlaceholder: String { get }
+    var firstNamePlaceholder: String { get }
+    var lastNamePlaceholder: String { get }
 
 	var shouldShowSignupButton: Bool { get }
 	var shouldShowLoginButton: Bool { get }
 	var shouldShowFacebookButton: Bool { get }
 	var shouldShowForgotPassword: Bool { get }
 
+    var facebookButtonBackgroundColor: UIColor { get }
+    var facebookButtonShadowColor: UIColor? { get }
 }
 
 public struct DefaultConfiguration: ConfigurationSource {
@@ -55,12 +58,16 @@ public struct DefaultConfiguration: ConfigurationSource {
 	public var emailPlaceholder: String
 	public var passwordPlaceholder: String
 	public var repeatPasswordPlaceholder: String
-	public var namePlaceholder: String
+	public var firstNamePlaceholder: String
+    public var lastNamePlaceholder: String
 
 	public var shouldShowSignupButton: Bool
 	public var shouldShowLoginButton: Bool
 	public var shouldShowFacebookButton: Bool
 	public var shouldShowForgotPassword: Bool
+    
+    public var facebookButtonBackgroundColor: UIColor
+    public var facebookButtonShadowColor: UIColor?
 
 	public init(backgroundImage: UIImage = UIImage(),
 		 backgroundImageGradient: Bool = true,
@@ -76,11 +83,14 @@ public struct DefaultConfiguration: ConfigurationSource {
 		 emailPlaceholder: String = "Email",
 		 passwordPlaceholder: String = "Password",
 		 repeatPasswordPlaceholder: String = "Repeat Password",
-		 namePlaceholder: String = "Full Name",
+		 firstNamePlaceholder: String = "First Name",
+         lastNamePlaceholder: String = "Last name",
 		 shouldShowSignupButton: Bool = true,
 		 shouldShowLoginButton: Bool = true,
 		 shouldShowFacebookButton: Bool = true,
-		 shouldShowForgotPassword: Bool = true) {
+		 shouldShowForgotPassword: Bool = true,
+         facebookButtonBackgroundColor: UIColor = UIColor(red: 89/255.0, green: 117/255.0, blue: 177/255.0, alpha: 1.0),
+         facebookButtonShadowColor: UIColor = UIColor(red: 89.0/255.0, green: 117.0/255.0, blue: 177.0/255.0, alpha: 1.0)) {
 		self.backgroundImage = backgroundImage
 		self.backgroundImageGradient = backgroundImageGradient
 		self.mainLogoImage = mainLogoImage
@@ -95,11 +105,14 @@ public struct DefaultConfiguration: ConfigurationSource {
 		self.emailPlaceholder = emailPlaceholder
 		self.passwordPlaceholder = passwordPlaceholder
 		self.repeatPasswordPlaceholder = repeatPasswordPlaceholder
-		self.namePlaceholder = namePlaceholder
+		self.firstNamePlaceholder = firstNamePlaceholder
+        self.lastNamePlaceholder = lastNamePlaceholder
 		self.shouldShowSignupButton = shouldShowSignupButton
 		self.shouldShowLoginButton = shouldShowLoginButton
 		self.shouldShowFacebookButton = shouldShowFacebookButton
 		self.shouldShowForgotPassword = shouldShowForgotPassword
+        self.facebookButtonBackgroundColor = facebookButtonBackgroundColor
+        self.facebookButtonShadowColor = facebookButtonShadowColor
 	}
 
 }
@@ -219,7 +232,7 @@ open class LoginCoordinator {
         print("Implement this method in your subclass to handle login.")
     }
 
-    open func signup(name: String, email: String, password: String) {
+    open func signup(firstName: String, lastName: String, email: String, password: String) {
         print("Implement this method in your subclass to handle signup.")
     }
 
@@ -233,9 +246,48 @@ open class LoginCoordinator {
 
 }
 
+// MARK: error handling
+public extension LoginCoordinator {
+    func setSignupError(message: String) {
+        if let signupViewController = _signupViewController {
+            signupViewController.errorLabel.text = message
+        }
+    }
+    
+    func setLoginError(message: String, clearPassword: Bool = true) {
+        if let loginViewControler = _loginViewController {
+            loginViewControler.errorLabel.text = message
+            if clearPassword {
+                loginViewControler.passwordTextField.text = ""
+            }
+        }
+    }
+}
+
+// MARK: Action disabling
+public extension LoginCoordinator {
+    func setSignupButtonEnabled(enabled: Bool) {
+        if let signupViewController = _signupViewController {
+            signupViewController.signupButton.isEnabled = enabled
+        }
+    }
+    
+    func setLoginButtonEnabled(enabled: Bool) {
+        if let loginViewController = _loginViewController {
+            loginViewController.loginButton.isEnabled = enabled
+        }
+    }
+    
+    func setPasswordResetButtonEnabled(enabled: Bool) {
+        if let passwordResetViewController = _passwordViewController {
+            passwordResetViewController.recoverButton.isEnabled = enabled
+        }
+    }
+}
+
 // MARK: - Navigation
 
-private extension LoginCoordinator {
+public extension LoginCoordinator {
 
     func goToLogin() {
         navigationController.pushViewController(loginViewController, animated: true)
@@ -298,8 +350,8 @@ extension LoginCoordinator: LoginViewControllerDelegate {
 
 extension LoginCoordinator: SignupViewControllerDelegate {
 
-    public func didSelectSignup(_ viewController: UIViewController, email: String, name: String, password: String) {
-        signup(name: name, email: email, password: password)
+    public func didSelectSignup(_ viewController: UIViewController, email: String, firstName: String, lastName: String, password: String) {
+        signup(firstName: firstName, lastName: lastName, email: email, password: password)
     }
 
     public func signupDidSelectBack(_ viewController: UIViewController) {

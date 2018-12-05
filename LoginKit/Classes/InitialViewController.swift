@@ -94,6 +94,7 @@ class InitialViewController: UIViewController, BackgroundMovable {
 
 		if configuration.shouldShowFacebookButton {
 			facebookButton.setTitle(configuration.facebookButtonText, for: .normal)
+            facebookButton.backgroundColor = configuration.facebookButtonBackgroundColor
 		} else {
 			facebookButton.isHidden = true
 		}
@@ -106,10 +107,12 @@ class InitialViewController: UIViewController, BackgroundMovable {
     }
 
     func addShadows() {
-        facebookButton.layer.shadowOpacity = 0.3
-        facebookButton.layer.shadowColor = UIColor(red: 89.0/255.0, green: 117.0/255.0, blue: 177.0/255.0, alpha: 1).cgColor
-        facebookButton.layer.shadowOffset = CGSize(width: 15, height: 15)
-        facebookButton.layer.shadowRadius = 7
+        if let shadowColor = configuration.facebookButtonShadowColor {
+            facebookButton.layer.shadowOpacity = 0.3
+            facebookButton.layer.shadowColor = shadowColor.cgColor
+            facebookButton.layer.shadowOffset = CGSize(width: 15, height: 15)
+            facebookButton.layer.shadowRadius = 7
+        }
     }
 
     // MARK: - Action's
