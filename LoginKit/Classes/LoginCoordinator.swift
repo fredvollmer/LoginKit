@@ -16,6 +16,7 @@ public protocol ConfigurationSource {
     var secondaryLogoImage: UIImage { get }
 
     var tintColor: UIColor { get }
+    var secondaryTintColor: UIColor { get }
     var errorTintColor: UIColor { get }
 
     var signupButtonText: String { get }
@@ -48,6 +49,7 @@ public struct DefaultConfiguration: ConfigurationSource {
 
 	public var tintColor: UIColor
 	public var errorTintColor: UIColor
+    public var secondaryTintColor: UIColor
 
 	public var signupButtonText: String
 	public var loginButtonText: String
@@ -75,7 +77,8 @@ public struct DefaultConfiguration: ConfigurationSource {
 		 secondaryLogoImage: UIImage = UIImage(),
 		 tintColor: UIColor = UIColor(red: 185.0 / 255.0, green: 117.0 / 255.0, blue: 216.0 / 255.0, alpha: 1),
 		 errorTintColor: UIColor = UIColor(red: 241 / 255, green: 196 / 255 , blue: 15 / 255, alpha: 1),
-		 signupButtonText: String = "Sign Up",
+		 buttonTextColor: UIColor = UIColor.white,
+         signupButtonText: String = "Sign Up",
 		 loginButtonText: String = "Log In",
 		 facebookButtonText: String = "Enter with Facebook",
 		 forgotPasswordButtonText: String = "Forgot Password",
@@ -97,6 +100,7 @@ public struct DefaultConfiguration: ConfigurationSource {
 		self.secondaryLogoImage = secondaryLogoImage
 		self.tintColor = tintColor
 		self.errorTintColor = errorTintColor
+        self.secondaryTintColor = buttonTextColor
 		self.signupButtonText = signupButtonText
 		self.loginButtonText = loginButtonText
 		self.facebookButtonText = facebookButtonText

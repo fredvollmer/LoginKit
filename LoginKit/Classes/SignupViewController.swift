@@ -100,6 +100,7 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
     func applyConfiguration() {
         view.backgroundColor = configuration.tintColor
         signupButton.setTitle(configuration.signupButtonText, for: .normal)
+        signupButton.setTitleColor(configuration.tintColor, for: .normal)
 
         backgroundImageView.image = configuration.backgroundImage
 		backgroundImageView.gradientType = configuration.backgroundImageGradient ? .normalGradient : .none

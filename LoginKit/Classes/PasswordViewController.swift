@@ -88,6 +88,7 @@ open class PasswordViewController: UIViewController, BackgroundMovable, Keyboard
         emailTextField.placeholder = configuration.emailPlaceholder
         emailTextField.errorColor = configuration.errorTintColor
         recoverButton.setTitle(configuration.recoverPasswordButtonText, for: .normal)
+        recoverButton.setTitleColor(configuration.tintColor, for: .normal)
     }
 
     func setupFonts() {

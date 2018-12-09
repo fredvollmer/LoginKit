@@ -108,7 +108,7 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
         errorLabel.textColor = configuration.errorTintColor
 
         loginButton.setTitle(configuration.loginButtonText, for: .normal)
-        loginButton.setTitleColor(configuration.tintColor, for: .normal)
+        loginButton.setTitleColor(configuration.secondaryTintColor, for: .normal)
         forgotPasswordButton.isHidden = !configuration.shouldShowForgotPassword
         forgotPasswordButton.setTitle(configuration.forgotPasswordButtonText, for: .normal)
 
