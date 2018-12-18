@@ -44,6 +44,14 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
     // MARK: Background Movable
 
     var movableBackground: UIView { return backgroundImageView }
+    
+    // MARK: Loading spinner
+    let loadingSpinner: UIActivityIndicatorView = {
+        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        loginSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loginSpinner.hidesWhenStopped = true
+        return loginSpinner
+    }()
 
     // MARK: Outlet's
 
@@ -62,8 +70,10 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
 	override open func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.text = ""
+        loginButton.setTitle("", for: .disabled)
 		_ = loadFonts
         setupValidation()
+        setupLoadingSpinner()
         initKeyboardMover()
         initBackgroundMover()
         customizeAppearance()
@@ -88,6 +98,12 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
 
     // MARK: - Setup
 
+    func setupLoadingSpinner() {
+        loginButton.addSubview(loadingSpinner)
+        loadingSpinner.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
+        loadingSpinner.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor).isActive = true
+    }
+    
     func customizeAppearance() {
         applyConfiguration()
         setupFonts()
@@ -226,4 +242,16 @@ extension LoginViewController : UITextFieldDelegate {
         return false
     }
     
+}
+
+// MARK: Loading
+extension LoginViewController {
+    func setLoading(loading: Bool) {
+        loginButton.isEnabled = !loading
+        if loading {
+            loadingSpinner.startAnimating()
+        } else {
+            loadingSpinner.stopAnimating()
+        }
+    }
 }

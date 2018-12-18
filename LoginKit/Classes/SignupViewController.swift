@@ -10,46 +10,54 @@ import UIKit
 import Validator
 
 public protocol SignupViewControllerDelegate: class {
-
+    
     func didSelectSignup(_ viewController: UIViewController, email: String, firstName: String, lastName: String, password: String)
     func signupDidSelectBack(_ viewController: UIViewController)
-
+    
 }
 
 open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMovable {
-
+    
     // MARK: - Properties
-
+    
     weak var delegate: SignupViewControllerDelegate?
-
-	lazy var configuration: ConfigurationSource = {
-		return DefaultConfiguration()
-	}()
-
+    
+    lazy var configuration: ConfigurationSource = {
+        return DefaultConfiguration()
+    }()
+    
     var signupAttempted = false
-
+    
     var signupInProgress = false {
         didSet {
             signupButton.isEnabled = !signupInProgress
         }
     }
-
+    
     // MARK: Keyboard Movable
-
+    
     var selectedField: UITextField?
-
+    
     var offset: CGFloat = 0.0
-
+    
     // MARK: Background Movable
-
+    
     var movableBackground: UIView {
         get {
             return backgroundImageView
         }
     }
-
+    
+    // MARK: Loading spinner
+    let loadingSpinner: UIActivityIndicatorView = {
+        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        loginSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loginSpinner.hidesWhenStopped = true
+        return loginSpinner
+    }()
+    
     // MARK: Outlet's
-
+    
     @IBOutlet var fields: [SkyFloatingLabelTextField]!
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var firstNameTextField: SkyFloatingLabelTextField!
@@ -60,38 +68,46 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var signupButton: Buttn!
     @IBOutlet weak var errorLabel: UILabel!
-
+    
     // MARK: - UIViewController
-
-	override open func viewDidLoad() {
+    
+    override open func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.text = ""
-		_ = loadFonts
+        signupButton.setTitle("", for: .disabled)
+        _ = loadFonts
         setupValidation()
+        setupLoadingSpinner()
         initKeyboardMover()
         initBackgroundMover()
         customizeAppearance()
     }
-
-	override open func loadView() {
+    
+    override open func loadView() {
         self.view = viewFromNib(optionalName: "SignupViewController")
     }
-
-	override open func didReceiveMemoryWarning() {
+    
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-	override open func viewWillDisappear(_ animated: Bool) {
+    
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         destroyKeyboardMover()
     }
-
-	override open var preferredStatusBarStyle: UIStatusBarStyle {
+    
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
     // MARK: - Setup
-
+    
+    func setupLoadingSpinner() {
+        signupButton.addSubview(loadingSpinner)
+        loadingSpinner.centerXAnchor.constraint(equalTo: signupButton.centerXAnchor).isActive = true
+        loadingSpinner.centerYAnchor.constraint(equalTo: signupButton.centerYAnchor).isActive = true
+    }
+    
     func customizeAppearance() {
         applyConfiguration()
         setupFonts()
@@ -101,13 +117,13 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
         view.backgroundColor = configuration.tintColor
         signupButton.setTitle(configuration.signupButtonText, for: .normal)
         signupButton.setTitleColor(configuration.tintColor, for: .normal)
-
+        
         backgroundImageView.image = configuration.backgroundImage
-		backgroundImageView.gradientType = configuration.backgroundImageGradient ? .normalGradient : .none
+        backgroundImageView.gradientType = configuration.backgroundImageGradient ? .normalGradient : .none
         backgroundImageView.gradientColor = configuration.tintColor
         backgroundImageView.fadeColor = configuration.tintColor
         logoImageView.image = configuration.secondaryLogoImage
-
+        
         emailTextField.placeholder = configuration.emailPlaceholder
         emailTextField.errorColor = configuration.errorTintColor
         firstNameTextField.placeholder = configuration.firstNamePlaceholder
@@ -121,7 +137,7 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
         
         errorLabel.textColor = configuration.errorTintColor
     }
-
+    
     func setupFonts() {
         firstNameTextField.font = Font.montserratRegular.get(size: 13)
         lastNameTextField.font = Font.montserratRegular.get(size: 13)
@@ -131,52 +147,52 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
         signupButton.titleLabel?.font = Font.montserratRegular.get(size: 15)
         errorLabel.font = Font.montserratRegular.get(size: 13)
     }
-
+    
     // MARK: - Action's
-
+    
     @IBAction func didSelectBack(_ sender: AnyObject) {
         delegate?.signupDidSelectBack(self)
     }
-
+    
     @IBAction func didSelectSignup(_ sender: AnyObject) {
         guard let email = emailTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let password = passwordTextField.text else {
             return
         }
-
+        
         signupAttempted = true
         validateFields {
             delegate?.didSelectSignup(self, email: email, firstName: firstName, lastName: lastName, password: password)
         }
     }
-
+    
 }
 
 // MARK: - Validation
 
 extension SignupViewController {
-
+    
     var equalPasswordRule: ValidationRuleEquality<String> {
         return ValidationRuleEquality<String>(dynamicTarget: { self.passwordTextField.text ?? "" },
                                               error: ValidationError.passwordNotEqual)
     }
-
+    
     func setupValidation() {
         setupValidationOn(field: firstNameTextField, rules: ValidationService.nameRules)
         setupValidationOn(field: lastNameTextField, rules: ValidationService.nameRules)
         setupValidationOn(field: emailTextField, rules: ValidationService.emailRules)
-
+        
         var passwordRules = ValidationService.passwordRules
         setupValidationOn(field: passwordTextField, rules: passwordRules)
         passwordRules.add(rule: equalPasswordRule)
         setupValidationOn(field: repeatPasswordTextField, rules: passwordRules)
     }
-
+    
     func setupValidationOn(field: SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
         field.validationRules = rules
         field.validateOnInputChange(enabled: true)
         field.validationHandler = validationHandlerFor(field: field)
     }
-
+    
     func validationHandlerFor(field: SkyFloatingLabelTextField) -> ((ValidationResult) -> Void) {
         return { result in
             switch result {
@@ -195,7 +211,7 @@ extension SignupViewController {
             }
         }
     }
-
+    
     func validateFields(success: () -> Void) {
         var errorFound = false
         for field in fields {
@@ -214,27 +230,27 @@ extension SignupViewController {
             success()
         }
     }
-
+    
 }
 
 // MARK: - UITextField Delegate
 
 extension SignupViewController : UITextFieldDelegate {
-
+    
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         selectedField = textField
     }
-
+    
     public func textFieldDidEndEditing(_ textField: UITextField) {
         selectedField = nil
     }
-
+    
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-
+        textField.resignFirstResponder()
+        
         let nextTag = textField.tag + 1
         let nextResponder = view.viewWithTag(nextTag) as UIResponder!
-
+        
         if nextResponder != nil {
             nextResponder?.becomeFirstResponder()
         } else {
@@ -243,5 +259,16 @@ extension SignupViewController : UITextFieldDelegate {
         
         return false
     }
-    
+}
+
+// MARK: Loading
+extension SignupViewController {
+    func setLoading(loading: Bool) {
+        signupButton.isEnabled = !loading
+        if loading {
+            loadingSpinner.startAnimating()
+        } else {
+            loadingSpinner.stopAnimating()
+        }
+    }
 }

@@ -42,6 +42,14 @@ open class PasswordViewController: UIViewController, BackgroundMovable, Keyboard
         }
     }
 
+    // MARK: Loading spinner
+    let loadingSpinner: UIActivityIndicatorView = {
+        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        loginSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loginSpinner.hidesWhenStopped = true
+        return loginSpinner
+    }()
+    
     // MARK: Outlet's
 
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
@@ -54,7 +62,9 @@ open class PasswordViewController: UIViewController, BackgroundMovable, Keyboard
 	override open func viewDidLoad() {
         super.viewDidLoad()
 		_ = loadFonts
+        recoverButton.setTitle("", for: .disabled)
         initBackgroundMover()
+        setupLoadingSpinner()
         customizeAppearance()
         setupValidation()
     }
@@ -73,6 +83,12 @@ open class PasswordViewController: UIViewController, BackgroundMovable, Keyboard
 
     // MARK: - Setup
 
+    func setupLoadingSpinner() {
+        recoverButton.addSubview(loadingSpinner)
+        loadingSpinner.centerXAnchor.constraint(equalTo: recoverButton.centerXAnchor).isActive = true
+        loadingSpinner.centerYAnchor.constraint(equalTo: recoverButton.centerYAnchor).isActive = true
+    }
+    
     func customizeAppearance() {
         applyConfiguration()
         setupFonts()
@@ -190,5 +206,16 @@ extension PasswordViewController: UITextFieldDelegate {
 
         return false
     }
-    
+}
+
+// MARK: Loading
+extension PasswordViewController {
+    func setLoading(loading: Bool) {
+        recoverButton.isEnabled = !loading
+        if loading {
+            loadingSpinner.startAnimating()
+        } else {
+            loadingSpinner.stopAnimating()
+        }
+    }
 }

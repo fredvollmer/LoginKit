@@ -31,6 +31,14 @@ class InitialViewController: UIViewController, BackgroundMovable {
     var movableBackground: UIView {
 		return backgroundImageView
     }
+    
+    // MARK: Loading spinner
+    let loadingSpinner: UIActivityIndicatorView = {
+        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        loginSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loginSpinner.hidesWhenStopped = true
+        return loginSpinner
+    }()
 
     // MARK: Outlet's
 
@@ -45,6 +53,8 @@ class InitialViewController: UIViewController, BackgroundMovable {
     override func viewDidLoad() {
         super.viewDidLoad()
         _ = loadFonts
+        facebookButton.setTitle("", for: .disabled)
+        setupLoadingSpinner()
         initBackgroundMover()
         customizeAppearance()
     }
@@ -63,6 +73,12 @@ class InitialViewController: UIViewController, BackgroundMovable {
 
     // MARK: - Setup
 
+    func setupLoadingSpinner() {
+        facebookButton.addSubview(loadingSpinner)
+        loadingSpinner.centerXAnchor.constraint(equalTo: facebookButton.centerXAnchor).isActive = true
+        loadingSpinner.centerYAnchor.constraint(equalTo: facebookButton.centerYAnchor).isActive = true
+    }
+    
     func customizeAppearance() {
         applyConfiguration()
         setupFonts()
@@ -139,4 +155,15 @@ extension InitialViewController: UINavigationControllerDelegate {
         return CrossDissolveAnimation()
     }
 
+}
+// MARK: Loading
+extension InitialViewController {
+    func setFacebookLoading(loading: Bool) {
+        facebookButton.isEnabled = !loading
+        if loading {
+            loadingSpinner.startAnimating()
+        } else {
+            loadingSpinner.stopAnimating()
+        }
+    }
 }

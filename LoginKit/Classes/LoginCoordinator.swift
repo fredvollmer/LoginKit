@@ -268,23 +268,29 @@ public extension LoginCoordinator {
     }
 }
 
-// MARK: Action disabling
+// MARK: Loading
 public extension LoginCoordinator {
-    func setSignupButtonEnabled(enabled: Bool) {
+    func setSignUpLoading(loading: Bool) {
         if let signupViewController = _signupViewController {
-            signupViewController.signupButton.isEnabled = enabled
+            signupViewController.setLoading(loading: loading)
         }
     }
     
-    func setLoginButtonEnabled(enabled: Bool) {
+    func setLoginLoading(loading: Bool) {
         if let loginViewController = _loginViewController {
-            loginViewController.loginButton.isEnabled = enabled
+            loginViewController.setLoading(loading: loading)
         }
     }
     
-    func setPasswordResetButtonEnabled(enabled: Bool) {
+    func setPasswordResetLoading(loading: Bool) {
         if let passwordResetViewController = _passwordViewController {
-            passwordResetViewController.recoverButton.isEnabled = enabled
+            passwordResetViewController.setLoading(loading: loading)
+        }
+    }
+    
+    func setFacebookLoading(loading: Bool) {
+        if let initialViewController = _initialViewController {
+        initialViewController.setFacebookLoading(loading: loading)
         }
     }
 }
