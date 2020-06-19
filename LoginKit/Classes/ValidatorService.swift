@@ -9,7 +9,7 @@
 import Foundation
 import Validator
 
-enum ValidationError: String, Error {
+enum LoginFormValidationError: String, ValidationError {
 
     case invalidName = "Invalid name"
     case invalidEmail = "Invalid email address"
@@ -23,12 +23,11 @@ enum ValidationError: String, Error {
 }
 
 public struct FullNameRule: ValidationRule {
-
     public typealias InputType = String
+    
+    public var error: ValidationError
 
-    public var error: Error
-
-    public init(error: Error) {
+    public init(error: ValidationError) {
         self.error = error
     }
 
@@ -47,7 +46,7 @@ public struct FullNameRule: ValidationRule {
             return false
         }
         
-        guard first.characters.count > 1, last.characters.count > 1 else {
+        guard first.count > 1, last.count > 1 else {
             return false
         }
 
@@ -66,13 +65,13 @@ struct ValidationService {
 
     static var passwordRules: ValidationRuleSet<String> {
         var passwordRules = ValidationRuleSet<String>()
-        passwordRules.add(rule: ValidationRuleLength(min: 8, error: ValidationError.passwordLength))
+        passwordRules.add(rule: ValidationRuleLength(min: 8, error: LoginFormValidationError.passwordLength))
         return passwordRules
     }
 
     static var nameRules: ValidationRuleSet<String> {
         var nameRules = ValidationRuleSet<String>()
-        nameRules.add(rule: ValidationRuleLength(min: 1, error: ValidationError.invalidName))
+        nameRules.add(rule: ValidationRuleLength(min: 1, error: LoginFormValidationError.invalidName))
         return nameRules
     }
 
@@ -80,7 +79,7 @@ struct ValidationService {
 
     private static var emailRule: ValidationRulePattern {
         return ValidationRulePattern(pattern: EmailValidationPattern.standard,
-                                     error: ValidationError.invalidEmail)
+                                     error: LoginFormValidationError.invalidEmail)
     }
 
 }

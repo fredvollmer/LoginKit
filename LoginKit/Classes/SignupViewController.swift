@@ -50,7 +50,7 @@ open class SignupViewController: UIViewController, KeyboardMovable, BackgroundMo
     
     // MARK: Loading spinner
     let loadingSpinner: UIActivityIndicatorView = {
-        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let loginSpinner = UIActivityIndicatorView(style: .white)
         loginSpinner.translatesAutoresizingMaskIntoConstraints = false
         loginSpinner.hidesWhenStopped = true
         return loginSpinner
@@ -173,21 +173,21 @@ extension SignupViewController {
     
     var equalPasswordRule: ValidationRuleEquality<String> {
         return ValidationRuleEquality<String>(dynamicTarget: { self.passwordTextField.text ?? "" },
-                                              error: ValidationError.passwordNotEqual)
+                                              error: LoginFormValidationError.passwordNotEqual)
     }
     
     func setupValidation() {
-        setupValidationOn(field: firstNameTextField, rules: ValidationService.nameRules)
-        setupValidationOn(field: lastNameTextField, rules: ValidationService.nameRules)
-        setupValidationOn(field: emailTextField, rules: ValidationService.emailRules)
+        setupValidationOn(field: &firstNameTextField, rules: ValidationService.nameRules)
+        setupValidationOn(field: &lastNameTextField, rules: ValidationService.nameRules)
+        setupValidationOn(field: &emailTextField, rules: ValidationService.emailRules)
         
         var passwordRules = ValidationService.passwordRules
-        setupValidationOn(field: passwordTextField, rules: passwordRules)
+        setupValidationOn(field: &passwordTextField, rules: passwordRules)
         passwordRules.add(rule: equalPasswordRule)
-        setupValidationOn(field: repeatPasswordTextField, rules: passwordRules)
+        setupValidationOn(field: &repeatPasswordTextField, rules: passwordRules)
     }
     
-    func setupValidationOn(field: SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
+    func setupValidationOn(field: inout SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
         field.validationRules = rules
         field.validateOnInputChange(enabled: true)
         field.validationHandler = validationHandlerFor(field: field)
@@ -205,7 +205,7 @@ extension SignupViewController {
                 guard self.signupAttempted == true else {
                     break
                 }
-                if let errors = errors as? [ValidationError] {
+                if let errors = errors as? [LoginFormValidationError] {
                     field.errorMessage = errors.first?.message
                 }
             }
@@ -221,7 +221,7 @@ extension SignupViewController {
                 field.errorMessage = nil
             case .invalid(let errors):
                 errorFound = true
-                if let errors = errors as? [ValidationError] {
+                if let errors = errors as? [LoginFormValidationError] {
                     field.errorMessage = errors.first?.message
                 }
             }
@@ -249,7 +249,7 @@ extension SignupViewController : UITextFieldDelegate {
         textField.resignFirstResponder()
         
         let nextTag = textField.tag + 1
-        let nextResponder = view.viewWithTag(nextTag) as UIResponder!
+        let nextResponder = view?.viewWithTag(nextTag)
         
         if nextResponder != nil {
             nextResponder?.becomeFirstResponder()

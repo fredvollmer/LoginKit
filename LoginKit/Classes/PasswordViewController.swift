@@ -44,7 +44,7 @@ open class PasswordViewController: UIViewController, BackgroundMovable, Keyboard
 
     // MARK: Loading spinner
     let loadingSpinner: UIActivityIndicatorView = {
-        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let loginSpinner = UIActivityIndicatorView(style: .white)
         loginSpinner.translatesAutoresizingMaskIntoConstraints = false
         loginSpinner.hidesWhenStopped = true
         return loginSpinner
@@ -137,10 +137,10 @@ open class PasswordViewController: UIViewController, BackgroundMovable, Keyboard
 extension PasswordViewController {
 
     func setupValidation() {
-        setupValidationOn(field: emailTextField, rules: ValidationService.emailRules)
+        setupValidationOn(field: &emailTextField, rules: ValidationService.emailRules)
     }
 
-    func setupValidationOn(field: SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
+    func setupValidationOn( field: inout SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
         field.validationRules = rules
         field.validateOnInputChange(enabled: true)
         field.validationHandler = validationHandlerFor(field: field)
@@ -158,7 +158,7 @@ extension PasswordViewController {
                 guard self.recoverAttempted == true else {
                     break
                 }
-                if let errors = errors as? [ValidationError] {
+                if let errors = errors as? [LoginFormValidationError] {
                     field.errorMessage = errors.first?.message
                 }
             }
@@ -172,7 +172,7 @@ extension PasswordViewController {
             emailTextField.errorMessage = nil
             success()
         case .invalid(let errors):
-            if let errors = errors as? [ValidationError] {
+            if let errors = errors as? [LoginFormValidationError] {
                 emailTextField.errorMessage = errors.first?.message
             }
         }
@@ -196,7 +196,7 @@ extension PasswordViewController: UITextFieldDelegate {
 		textField.resignFirstResponder()
 
         let nextTag = textField.tag + 1
-        let nextResponder = view.viewWithTag(nextTag) as UIResponder!
+        let nextResponder = view?.viewWithTag(nextTag)
 
         if nextResponder != nil {
             nextResponder?.becomeFirstResponder()

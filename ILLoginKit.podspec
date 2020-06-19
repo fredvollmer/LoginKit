@@ -12,7 +12,7 @@ All you need to do is start LoginKit, and then make the necessary calls to your 
   s.source           = { :git => 'https://github.com/fredvollmer/LoginKit.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/danlozanov'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'LoginKit/Classes/**/*'
   s.resources = 'LoginKit/Assets/*.{xib,xcassets,png,jpg,otf,ttf}'
@@ -22,7 +22,9 @@ All you need to do is start LoginKit, and then make the necessary calls to your 
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'Validator', '3.0.2'
-  s.dependency 'FBSDKLoginKit', '4.31.0'
+  s.dependency 'Validator', '~> 3.2.1'
+  s.dependency 'FBSDKLoginKit', '~> 7.0.1'
 
+  s.swift_versions = '5.0'
+  s.swift_versions = '5.0'
 end

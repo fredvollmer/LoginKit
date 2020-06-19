@@ -34,7 +34,7 @@ class InitialViewController: UIViewController, BackgroundMovable {
     
     // MARK: Loading spinner
     let loadingSpinner: UIActivityIndicatorView = {
-        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let loginSpinner = UIActivityIndicatorView(style: .white)
         loginSpinner.translatesAutoresizingMaskIntoConstraints = false
         loginSpinner.hidesWhenStopped = true
         return loginSpinner
@@ -151,7 +151,7 @@ class InitialViewController: UIViewController, BackgroundMovable {
 
 extension InitialViewController: UINavigationControllerDelegate {
 
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return CrossDissolveAnimation()
     }
 

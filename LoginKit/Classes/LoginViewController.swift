@@ -47,7 +47,7 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
     
     // MARK: Loading spinner
     let loadingSpinner: UIActivityIndicatorView = {
-        let loginSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let loginSpinner = UIActivityIndicatorView(style: .gray)
         loginSpinner.translatesAutoresizingMaskIntoConstraints = false
         loginSpinner.hidesWhenStopped = true
         return loginSpinner
@@ -165,11 +165,11 @@ open class LoginViewController: UIViewController, BackgroundMovable, KeyboardMov
 extension LoginViewController {
 
     func setupValidation() {
-        setupValidationOn(field: emailTextField, rules: ValidationService.emailRules)
-        setupValidationOn(field: passwordTextField, rules: ValidationService.passwordRules)
+        setupValidationOn(field: &emailTextField, rules: ValidationService.emailRules)
+        setupValidationOn(field: &passwordTextField, rules: ValidationService.passwordRules)
     }
 
-    func setupValidationOn(field: SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
+    func setupValidationOn(field: inout SkyFloatingLabelTextField, rules: ValidationRuleSet<String>) {
         field.validationRules = rules
         field.validateOnInputChange(enabled: true)
         field.validationHandler = validationHandlerFor(field: field)
@@ -187,7 +187,7 @@ extension LoginViewController {
                 guard self.loginAttempted == true else {
                     break
                 }
-                if let errors = errors as? [ValidationError] {
+                if let errors = errors as? [LoginFormValidationError] {
                     field.errorMessage = errors.first?.message
                 }
             }
@@ -203,7 +203,7 @@ extension LoginViewController {
                 field.errorMessage = nil
             case .invalid(let errors):
                 errorFound = true
-                if let errors = errors as? [ValidationError] {
+                if let errors = errors as? [LoginFormValidationError] {
                     field.errorMessage = errors.first?.message
                 }
             }
@@ -231,7 +231,7 @@ extension LoginViewController : UITextFieldDelegate {
 		textField.resignFirstResponder()
 
         let nextTag = textField.tag + 1
-        let nextResponder = view.viewWithTag(nextTag) as UIResponder!
+        let nextResponder = view?.viewWithTag(nextTag)
 
         if nextResponder != nil {
             nextResponder?.becomeFirstResponder()

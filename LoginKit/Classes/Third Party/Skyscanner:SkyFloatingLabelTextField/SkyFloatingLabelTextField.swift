@@ -69,8 +69,8 @@ open class SkyFloatingLabelTextField: UITextField {
         if let
             placeholder = self.placeholder,
             let font = self.placeholderFont ?? self.font {
-                self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName:placeholderColor,
-                    NSFontAttributeName: font])
+                self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor):placeholderColor,
+                    convertFromNSAttributedStringKey(NSAttributedString.Key.font): font]))
         }
     }
 
@@ -435,7 +435,7 @@ open class SkyFloatingLabelTextField: UITextField {
             self.titleLabel.frame = frame
         }
         if animated {
-            let animationOptions:UIViewAnimationOptions = .curveEaseOut;
+            let animationOptions:UIView.AnimationOptions = .curveEaseOut;
             let duration = self.isTitleVisible() ? titleFadeInDuration : titleFadeOutDuration
 
             UIView.animate(withDuration: duration, delay: 0, options: animationOptions, animations: { () -> Void in
@@ -580,4 +580,15 @@ open class SkyFloatingLabelTextField: UITextField {
         }
         return nil
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }
