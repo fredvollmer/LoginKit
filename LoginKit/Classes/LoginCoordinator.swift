@@ -67,7 +67,7 @@ public struct DefaultConfiguration: ConfigurationSource {
 	public var shouldShowLoginButton: Bool
 	public var shouldShowFacebookButton: Bool
 	public var shouldShowForgotPassword: Bool
-    
+
     public var facebookButtonBackgroundColor: UIColor
     public var facebookButtonShadowColor: UIColor?
 
@@ -140,6 +140,7 @@ open class LoginCoordinator {
     fileprivate var navigationController: UINavigationController {
         if _navigationController == nil {
             _navigationController = UINavigationController(rootViewController: self.initialViewController)
+            _navigationController?.modalPresentationStyle = .fullScreen
         }
         return _navigationController!
     }
@@ -218,7 +219,7 @@ open class LoginCoordinator {
         if let rootViewController = rootViewController {
             rootViewController.dismiss(animated: animated, completion: nil)
         }
-        
+
         _navigationController = nil
         _initialViewController = nil
         _loginViewController = nil
@@ -257,7 +258,7 @@ public extension LoginCoordinator {
             signupViewController.errorLabel.text = message
         }
     }
-    
+
     func setLoginError(message: String, clearPassword: Bool = true) {
         if let loginViewControler = _loginViewController {
             loginViewControler.errorLabel.text = message
@@ -275,19 +276,19 @@ public extension LoginCoordinator {
             signupViewController.setLoading(loading: loading)
         }
     }
-    
+
     func setLoginLoading(loading: Bool) {
         if let loginViewController = _loginViewController {
             loginViewController.setLoading(loading: loading)
         }
     }
-    
+
     func setPasswordResetLoading(loading: Bool) {
         if let passwordResetViewController = _passwordViewController {
             passwordResetViewController.setLoading(loading: loading)
         }
     }
-    
+
     func setFacebookLoading(loading: Bool) {
         if let initialViewController = _initialViewController {
         initialViewController.setFacebookLoading(loading: loading)
@@ -403,7 +404,7 @@ enum Font: String {
     func get(size: CGFloat = 15.0) -> UIFont {
         return UIFont(name: self.rawValue, size: size)!
     }
-    
+
 }
 
 let loadFonts: () = {
@@ -444,7 +445,7 @@ extension LoginCoordinator {
         #else
             let font = CGFont(provider)
         #endif
-        
+
         var error: Unmanaged<CFError>?
 
         let success = CTFontManagerRegisterGraphicsFont(font, &error)
@@ -452,7 +453,7 @@ extension LoginCoordinator {
             print("Error registering font. Font is possibly already registered.")
             return false
         }
-        
+
         return true
     }
 
