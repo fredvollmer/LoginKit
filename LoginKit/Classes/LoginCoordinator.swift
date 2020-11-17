@@ -215,9 +215,11 @@ open class LoginCoordinator {
         }
     }
 
-    open func finish(animated: Bool = true) {
+    open func finish(animated: Bool = true, completion: (() -> Void)? = nil) {
         if let rootViewController = rootViewController {
-            rootViewController.dismiss(animated: animated, completion: nil)
+            rootViewController.dismiss(animated: animated, completion: completion)
+        } else {
+            completion?()
         }
 
         _navigationController = nil
