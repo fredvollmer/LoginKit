@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 protocol InitialViewControllerDelegate: class {
-
     func didSelectSignup(_ viewController: UIViewController)
     func didSelectLogin(_ viewController: UIViewController)
     func didSelectFacebook(_ viewController: UIViewController)
-
+    func didSelectApple(_ viewController: UIViewController)
 }
 
 class InitialViewController: UIViewController, BackgroundMovable {
@@ -44,10 +44,11 @@ class InitialViewController: UIViewController, BackgroundMovable {
 
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: GradientImageView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var signupButton: Buttn!
     @IBOutlet weak var loginButton: Buttn!
     @IBOutlet weak var facebookButton: UIButton!
-
+    
     // MARK: - UIViewController
 
     override func viewDidLoad() {
@@ -57,6 +58,7 @@ class InitialViewController: UIViewController, BackgroundMovable {
         setupLoadingSpinner()
         initBackgroundMover()
         customizeAppearance()
+        setupAppleSignIn()
     }
 
     override func loadView() {
@@ -73,6 +75,19 @@ class InitialViewController: UIViewController, BackgroundMovable {
 
     // MARK: - Setup
 
+    func setupAppleSignIn() {
+        if #available(iOS 13.0, *), configuration.shouldShowAppleButton {
+            let appleButton = ASAuthorizationAppleIDButton(type: .default, style: .white)
+            appleButton.addTarget(self, action: #selector(didSelectApple), for: .touchUpInside)
+            appleButton.translatesAutoresizingMaskIntoConstraints = false
+            appleButton.cornerRadius = 27
+            self.stackView.addArrangedSubview(appleButton)
+            NSLayoutConstraint.activate([
+                appleButton.heightAnchor.constraint(equalToConstant: 54),
+            ])
+        }
+    }
+    
     func setupLoadingSpinner() {
         facebookButton.addSubview(loadingSpinner)
         loadingSpinner.centerXAnchor.constraint(equalTo: facebookButton.centerXAnchor).isActive = true
@@ -127,7 +142,6 @@ class InitialViewController: UIViewController, BackgroundMovable {
             facebookButton.layer.shadowOpacity = 0.3
             facebookButton.layer.shadowColor = shadowColor.cgColor
             facebookButton.layer.shadowOffset = CGSize(width: 15, height: 15)
-            facebookButton.layer.shadowRadius = 7
         }
     }
 
@@ -145,6 +159,9 @@ class InitialViewController: UIViewController, BackgroundMovable {
         delegate?.didSelectFacebook(self)
     }
 
+    @objc func didSelectApple() {
+        delegate?.didSelectApple(self)
+    }
 }
 
 // MARK: - UINavigationController Delegate

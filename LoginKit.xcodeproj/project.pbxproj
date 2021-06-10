@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9CB854D266B18690025A861 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A9CB8548266B18680025A861 /* README.md */; };
+		A9CB854E266B18690025A861 /* Example in Resources */ = {isa = PBXBuildFile; fileRef = A9CB8549266B18680025A861 /* Example */; };
+		A9CB854F266B18690025A861 /* ILLoginKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A9CB854A266B18680025A861 /* ILLoginKit.podspec */; };
+		A9CB8551266B18690025A861 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A9CB854C266B18690025A861 /* LICENSE */; };
+		A9CB85AD266B1A930025A861 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB858F266B1A930025A861 /* SignupViewController.swift */; };
+		A9CB85AE266B1A930025A861 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8590266B1A930025A861 /* GradientImageView.swift */; };
+		A9CB85AF266B1A930025A861 /* KeyboardMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8591266B1A930025A861 /* KeyboardMover.swift */; };
+		A9CB85B0266B1A930025A861 /* BackgroundMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8592266B1A930025A861 /* BackgroundMover.swift */; };
+		A9CB85B1266B1A930025A861 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8593266B1A930025A861 /* LoginCoordinator.swift */; };
+		A9CB85B2266B1A930025A861 /* Buttn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8594266B1A930025A861 /* Buttn.swift */; };
+		A9CB85B3266B1A930025A861 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8595266B1A930025A861 /* PasswordViewController.swift */; };
+		A9CB85B4266B1A930025A861 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = A9CB8596266B1A930025A861 /* .gitkeep */; };
+		A9CB85B5266B1A930025A861 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8597266B1A930025A861 /* InitialViewController.swift */; };
+		A9CB85B6266B1A930025A861 /* ValidatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8598266B1A930025A861 /* ValidatorService.swift */; };
+		A9CB85B7266B1A930025A861 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB8599266B1A930025A861 /* LoginViewController.swift */; };
+		A9CB85B8266B1A930025A861 /* CrossDissolveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB859A266B1A930025A861 /* CrossDissolveAnimation.swift */; };
+		A9CB85B9266B1A930025A861 /* UIViewController+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB859B266B1A930025A861 /* UIViewController+Nib.swift */; };
+		A9CB85BA266B1A930025A861 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB859C266B1A930025A861 /* FacebookService.swift */; };
+		A9CB85BB266B1A930025A861 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB859F266B1A930025A861 /* SkyFloatingLabelTextField.swift */; };
+		A9CB85BC266B1A930025A861 /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB85A0266B1A930025A861 /* UITextField+fixCaretPosition.swift */; };
+		A9CB85BD266B1A930025A861 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB85A1266B1A930025A861 /* SkyFloatingLabelTextFieldWithIcon.swift */; };
+		A9CB85BE266B1A930025A861 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A3266B1A930025A861 /* Media.xcassets */; };
+		A9CB85BF266B1A930025A861 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A4266B1A930025A861 /* Montserrat-Light.otf */; };
+		A9CB85C0266B1A930025A861 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A5266B1A930025A861 /* .gitkeep */; };
+		A9CB85C1266B1A930025A861 /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A6266B1A930025A861 /* PasswordViewController.xib */; };
+		A9CB85C2266B1A930025A861 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A7266B1A930025A861 /* LoginViewController.xib */; };
+		A9CB85C3266B1A930025A861 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A8266B1A930025A861 /* InitialViewController.xib */; };
+		A9CB85C4266B1A930025A861 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85A9266B1A930025A861 /* Montserrat-Regular.ttf */; };
+		A9CB85C5266B1A930025A861 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85AA266B1A930025A861 /* SignupViewController.xib */; };
+		A9CB85C6266B1A930025A861 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9CB85AB266B1A930025A861 /* Info.plist */; };
+		A9CB85C7266B1A930025A861 /* LoginKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A9CB85AC266B1A930025A861 /* LoginKit.h */; };
+		A9CB85CA266DA3830025A861 /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB85C9266DA3830025A861 /* AppleService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A9B9A6FD266EF666008600F0 /* LoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9CB8545266B18680025A861 /* _Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _Pods.xcodeproj; path = ../LoginKit2/_Pods.xcodeproj; sourceTree = "<group>"; };
+		A9CB8548266B18680025A861 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A9CB8549266B18680025A861 /* Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Example; sourceTree = "<group>"; };
+		A9CB854A266B18680025A861 /* ILLoginKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ILLoginKit.podspec; sourceTree = "<group>"; };
+		A9CB854C266B18690025A861 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A9CB858F266B1A930025A861 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		A9CB8590266B1A930025A861 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
+		A9CB8591266B1A930025A861 /* KeyboardMover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardMover.swift; sourceTree = "<group>"; };
+		A9CB8592266B1A930025A861 /* BackgroundMover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMover.swift; sourceTree = "<group>"; };
+		A9CB8593266B1A930025A861 /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		A9CB8594266B1A930025A861 /* Buttn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttn.swift; sourceTree = "<group>"; };
+		A9CB8595266B1A930025A861 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		A9CB8596266B1A930025A861 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		A9CB8597266B1A930025A861 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		A9CB8598266B1A930025A861 /* ValidatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorService.swift; sourceTree = "<group>"; };
+		A9CB8599266B1A930025A861 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A9CB859A266B1A930025A861 /* CrossDissolveAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossDissolveAnimation.swift; sourceTree = "<group>"; };
+		A9CB859B266B1A930025A861 /* UIViewController+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nib.swift"; sourceTree = "<group>"; };
+		A9CB859C266B1A930025A861 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
+		A9CB859F266B1A930025A861 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		A9CB85A0266B1A930025A861 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
+		A9CB85A1266B1A930025A861 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
+		A9CB85A3266B1A930025A861 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		A9CB85A4266B1A930025A861 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		A9CB85A5266B1A930025A861 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		A9CB85A6266B1A930025A861 /* PasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
+		A9CB85A7266B1A930025A861 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A9CB85A8266B1A930025A861 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
+		A9CB85A9266B1A930025A861 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		A9CB85AA266B1A930025A861 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		A9CB85AB266B1A930025A861 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9CB85AC266B1A930025A861 /* LoginKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginKit.h; sourceTree = "<group>"; };
+		A9CB85C9266DA3830025A861 /* AppleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9CB8536266B18450025A861 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9CB852F266B18450025A861 = {
+			isa = PBXGroup;
+			children = (
+				A9CB8545266B18680025A861 /* _Pods.xcodeproj */,
+				A9CB8549266B18680025A861 /* Example */,
+				A9CB854A266B18680025A861 /* ILLoginKit.podspec */,
+				A9CB854C266B18690025A861 /* LICENSE */,
+				A9CB8548266B18680025A861 /* README.md */,
+				A9CB858D266B1A930025A861 /* LoginKit */,
+				A9B9A6FD266EF666008600F0 /* LoginKit.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		A9CB8546266B18680025A861 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9CB858D266B1A930025A861 /* LoginKit */ = {
+			isa = PBXGroup;
+			children = (
+				A9CB858E266B1A930025A861 /* Classes */,
+				A9CB85A2266B1A930025A861 /* Assets */,
+				A9CB85AB266B1A930025A861 /* Info.plist */,
+				A9CB85AC266B1A930025A861 /* LoginKit.h */,
+			);
+			path = LoginKit;
+			sourceTree = "<group>";
+		};
+		A9CB858E266B1A930025A861 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A9CB858F266B1A930025A861 /* SignupViewController.swift */,
+				A9CB8590266B1A930025A861 /* GradientImageView.swift */,
+				A9CB8591266B1A930025A861 /* KeyboardMover.swift */,
+				A9CB8592266B1A930025A861 /* BackgroundMover.swift */,
+				A9CB8593266B1A930025A861 /* LoginCoordinator.swift */,
+				A9CB8594266B1A930025A861 /* Buttn.swift */,
+				A9CB8595266B1A930025A861 /* PasswordViewController.swift */,
+				A9CB8596266B1A930025A861 /* .gitkeep */,
+				A9CB8597266B1A930025A861 /* InitialViewController.swift */,
+				A9CB8598266B1A930025A861 /* ValidatorService.swift */,
+				A9CB8599266B1A930025A861 /* LoginViewController.swift */,
+				A9CB859A266B1A930025A861 /* CrossDissolveAnimation.swift */,
+				A9CB859B266B1A930025A861 /* UIViewController+Nib.swift */,
+				A9CB859C266B1A930025A861 /* FacebookService.swift */,
+				A9CB85C9266DA3830025A861 /* AppleService.swift */,
+				A9CB859D266B1A930025A861 /* Third Party */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A9CB859D266B1A930025A861 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				A9CB859E266B1A930025A861 /* Skyscanner:SkyFloatingLabelTextField */,
+			);
+			path = "Third Party";
+			sourceTree = "<group>";
+		};
+		A9CB859E266B1A930025A861 /* Skyscanner:SkyFloatingLabelTextField */ = {
+			isa = PBXGroup;
+			children = (
+				A9CB859F266B1A930025A861 /* SkyFloatingLabelTextField.swift */,
+				A9CB85A0266B1A930025A861 /* UITextField+fixCaretPosition.swift */,
+				A9CB85A1266B1A930025A861 /* SkyFloatingLabelTextFieldWithIcon.swift */,
+			);
+			path = "Skyscanner:SkyFloatingLabelTextField";
+			sourceTree = "<group>";
+		};
+		A9CB85A2266B1A930025A861 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A9CB85A3266B1A930025A861 /* Media.xcassets */,
+				A9CB85A4266B1A930025A861 /* Montserrat-Light.otf */,
+				A9CB85A5266B1A930025A861 /* .gitkeep */,
+				A9CB85A6266B1A930025A861 /* PasswordViewController.xib */,
+				A9CB85A7266B1A930025A861 /* LoginViewController.xib */,
+				A9CB85A8266B1A930025A861 /* InitialViewController.xib */,
+				A9CB85A9266B1A930025A861 /* Montserrat-Regular.ttf */,
+				A9CB85AA266B1A930025A861 /* SignupViewController.xib */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A9CB8534266B18450025A861 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9CB85C7266B1A930025A861 /* LoginKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A9CB8538266B18450025A861 /* LoginKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9CB8541266B18450025A861 /* Build configuration list for PBXNativeTarget "LoginKit" */;
+			buildPhases = (
+				A9CB8534266B18450025A861 /* Headers */,
+				A9CB8535266B18450025A861 /* Sources */,
+				A9CB8536266B18450025A861 /* Frameworks */,
+				A9CB8537266B18450025A861 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoginKit;
+			productName = LoginKit;
+			productReference = A9B9A6FD266EF666008600F0 /* LoginKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9CB8530266B18450025A861 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					A9CB8538266B18450025A861 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = A9CB8533266B18450025A861 /* Build configuration list for PBXProject "LoginKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A9CB852F266B18450025A861;
+			productRefGroup = A9CB852F266B18450025A861;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A9CB8546266B18680025A861 /* Products */;
+					ProjectRef = A9CB8545266B18680025A861 /* _Pods.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				A9CB8538266B18450025A861 /* LoginKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9CB8537266B18450025A861 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9CB85C4266B1A930025A861 /* Montserrat-Regular.ttf in Resources */,
+				A9CB85C2266B1A930025A861 /* LoginViewController.xib in Resources */,
+				A9CB85C3266B1A930025A861 /* InitialViewController.xib in Resources */,
+				A9CB854D266B18690025A861 /* README.md in Resources */,
+				A9CB854F266B18690025A861 /* ILLoginKit.podspec in Resources */,
+				A9CB85B4266B1A930025A861 /* .gitkeep in Resources */,
+				A9CB85C6266B1A930025A861 /* Info.plist in Resources */,
+				A9CB854E266B18690025A861 /* Example in Resources */,
+				A9CB85C5266B1A930025A861 /* SignupViewController.xib in Resources */,
+				A9CB85BE266B1A930025A861 /* Media.xcassets in Resources */,
+				A9CB85BF266B1A930025A861 /* Montserrat-Light.otf in Resources */,
+				A9CB8551266B18690025A861 /* LICENSE in Resources */,
+				A9CB85C1266B1A930025A861 /* PasswordViewController.xib in Resources */,
+				A9CB85C0266B1A930025A861 /* .gitkeep in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9CB8535266B18450025A861 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9CB85BC266B1A930025A861 /* UITextField+fixCaretPosition.swift in Sources */,
+				A9CB85AE266B1A930025A861 /* GradientImageView.swift in Sources */,
+				A9CB85B2266B1A930025A861 /* Buttn.swift in Sources */,
+				A9CB85B6266B1A930025A861 /* ValidatorService.swift in Sources */,
+				A9CB85B0266B1A930025A861 /* BackgroundMover.swift in Sources */,
+				A9CB85B3266B1A930025A861 /* PasswordViewController.swift in Sources */,
+				A9CB85B1266B1A930025A861 /* LoginCoordinator.swift in Sources */,
+				A9CB85AF266B1A930025A861 /* KeyboardMover.swift in Sources */,
+				A9CB85B8266B1A930025A861 /* CrossDissolveAnimation.swift in Sources */,
+				A9CB85AD266B1A930025A861 /* SignupViewController.swift in Sources */,
+				A9CB85B7266B1A930025A861 /* LoginViewController.swift in Sources */,
+				A9CB85BD266B1A930025A861 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
+				A9CB85B9266B1A930025A861 /* UIViewController+Nib.swift in Sources */,
+				A9CB85B5266B1A930025A861 /* InitialViewController.swift in Sources */,
+				A9CB85BB266B1A930025A861 /* SkyFloatingLabelTextField.swift in Sources */,
+				A9CB85CA266DA3830025A861 /* AppleService.swift in Sources */,
+				A9CB85BA266B1A930025A861 /* FacebookService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A9CB853F266B18450025A861 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A9CB8540266B18450025A861 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A9CB8542266B18450025A861 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = LJJVR3WSR9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LoginKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zooster.LoginKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9CB8543266B18450025A861 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = LJJVR3WSR9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LoginKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zooster.LoginKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9CB8533266B18450025A861 /* Build configuration list for PBXProject "LoginKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9CB853F266B18450025A861 /* Debug */,
+				A9CB8540266B18450025A861 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9CB8541266B18450025A861 /* Build configuration list for PBXNativeTarget "LoginKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9CB8542266B18450025A861 /* Debug */,
+				A9CB8543266B18450025A861 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9CB8530266B18450025A861 /* Project object */;
+}
